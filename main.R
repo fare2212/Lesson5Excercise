@@ -5,6 +5,7 @@ setwd("~/git/geoScripting/excerciseLesson5")
 getwd()
 library(raster)
 library(rgdal)
+library(ggplot2)
 
 # download the data of the two images
 
@@ -108,4 +109,5 @@ KML(x=NDVI14LL, filename='NDVI2014.kml',overwrite= TRUE)
 ext <- intersect(NDVI14LL,NDVI90LL)
 NDVI14Cr <-crop(NDVI14LL,ext)
 NDVI90Cr<- crop(NDVI90LL,ext)
-compareRaster(NDVI14Cr,NDVI90Cr)
+ result <- NDVI14Cr-NDVI90Cr
+plot(result)
